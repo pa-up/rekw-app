@@ -1,1 +1,1 @@
-web: gunicorn -k uvicorn.workers.UvicornWorker run:api
+web: gunicorn apl_name : main
