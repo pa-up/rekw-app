@@ -18,11 +18,14 @@ cryptography==37.0.1
 debugpy==1.5.1
 decorator==5.1.1
 defusedxml==0.7.1
-Django==3.2
+dj-database-url==1.0.0
+Django==4.1.2
+django-heroku==0.3.1
 entrypoints==0.4
 executing==0.8.3
 fastjsonschema==2.16.2
 Flask==2.2.2
+gunicorn==20.1.0
 idna==3.3
 ipykernel==6.15.2
 ipython==8.4.0
@@ -62,6 +65,7 @@ ply==3.11
 prometheus-client==0.14.1
 prompt-toolkit==3.0.20
 psutil==5.9.0
+psycopg2==2.9.4
 ptyprocess==0.7.0
 pure-eval==0.2.2
 pycparser==2.21
@@ -97,4 +101,5 @@ webencodings==0.5.1
 websocket-client==0.58.0
 Werkzeug==2.2.2
 wheel==0.37.1
+whitenoise==6.2.0
 widgetsnbextension==3.5.2

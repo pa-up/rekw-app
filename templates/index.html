@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1> ニャンコつぶやきフォーム　</h1>
+
+<form action="/result" method="post">  <!-- 送信アドレスを「/result」に決定 -->
+      <label for="article">つぶやく内容</label>
+      <input type="text" name="article">
+
+      <p></p>
+
+      <label for="name">つぶやいたネコ</label>
+      <input type="text" name="name">
+
+      <p></p>
+
+      <button type="submit">
+        送信
+      </button>
+</form>
+
+<p></p>
+
+<p>つぶやき内容 => {{ article }}</p>
+<p>つぶやいたネコ => {{ name }}</p>
+{% endblock %}
