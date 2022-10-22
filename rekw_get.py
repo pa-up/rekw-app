@@ -265,23 +265,29 @@ def rekw_function(main_kw):
         #
     #
 
+    # ==============================================================
+    # numpy配列をCSVに保存
+    # ==============================================================
+    csv_data = DataFrame(valuesArray, columns = columnsArray, index=False)
+
 
     # ==============================================================
-    # 取得した再検索kwをCSV化
+    # numpy配列をリストに変換
     # ==============================================================
-    csv_data = DataFrame(valuesArray, columns = columnsArray)
+    col_list = [ columnsArray[0] , columnsArray[1] , columnsArray[2] ]
 
-
-    # ==============================================================
-    # 「データフレーム型CSV」をhtml形式に変換
-    # ==============================================================
-    html_data = csv_data.to_html()
+    val_list = [ [0]*3 for i in range(64) ]
+    for k1 in range(0, 64, 1):
+        for k2 in range(0, 3, 1):
+            val_list[k1][k2] = valuesArray[k1][k2]
+        #
+    #
 
 
     # ==============================================================
     # 「main.py」に再検索キーワードのhtmlデータを返り値として、送信
     # ==============================================================
-    return html_data, csv_data
+    return col_list, val_list, csv_data
 #
     
     

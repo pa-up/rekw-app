@@ -4,6 +4,7 @@
 # 最初に必要なインポート
 #========================================================
 import os
+import csv
 from flask import Flask,request,render_template
 app = Flask(__name__)
 
@@ -29,7 +30,7 @@ def result():
     main_kw = request.form["article"]
 
     # 「rekw_get.py」から返り値「html_data」をこちらのファイルにインポート
-    reKw_data, csv_data = rekw_get.rekw_function(main_kw)
+    col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
 
     # フォルダ「rekw_save」内にCSVファイルがあれば、削除
     file_exsit = os.path.isfile("./rekw_save/rekw.csv")
@@ -38,9 +39,9 @@ def result():
     #
 
     # フォルダ「rekw_save」にCSVファイルを生成
-    #csv_data.to_csv("rekw_save\\rekw.csv", index=False)
+    csv_data.to_csv("rekw_save\\rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
-    return render_template("result.html", csv_data=csv_data,  main_kw=main_kw)
+    return render_template("result.html", col_list=col_list , val_list=val_list , main_kw=main_kw)
 #
 

@@ -21,9 +21,29 @@
 	<label for="article">
 		検索したキーワード -> {{ main_kw }}
 	</label>
+
 	<p></p>
-	<p>
-		{{ csv_data }}
-	</p>
+
+	<table class="rekw-table">
+		<thead>
+			<tr>
+				{% for k in col_list %}
+				<th>{{ k }}</th>
+				{% endfor %}
+			</tr>
+		</thead>
+		<tbody>
+			{% for k1 in val_list %}
+			<tr>
+				{% for k2 in k1 %}
+				<td>
+					{{ k2 }}
+				</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
 </body>
 </html>
