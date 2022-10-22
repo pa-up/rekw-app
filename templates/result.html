@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>再検索キーワードを抽出</title>
+</head>
+
+
+<body>
+	<h1>再検索キーワードの取得結果</h1>
+	<p>
+		Googleの検索結果画面ページ下部の「他のキーワード」を2階層分取得しました。
+	</p>
+	<p></p>
+	<a href="rekw_save/rekw.csv" download>CSV形式でダウンロード</a>
+	<p></p>
+	<label for="article">
+		検索したキーワード -> {% main_kw %}
+	</label>
+	<p></p>
+	<p>
+		{% reKw_data %}
+	</p>
+</body>
+</html>

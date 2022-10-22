@@ -1,0 +1,29 @@
+<!-- 再検索キーワードを入れる検索窓 -->
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>再検索キーワード取得サイトt</title>
+        <style>body {padding: 10px;}</style>
+    </head>
+
+
+    <body>
+        <h1> 再検索キーワードを取得　</h1>
+		<p>
+			Googleの検索結果画面ページ下部の「他のキーワード」を2階層分取得できます
+		</p>
+		
+		<form action="/result" method="post">
+			<label for="article">
+				キーワードを入力 ->
+			</label>
+			<input type="text" name="article">
+			<p></p>
+			<button type="submit">送信</button>
+		</form>
+	</body>
+</html>
+
+
