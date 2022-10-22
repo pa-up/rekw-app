@@ -38,9 +38,9 @@ def result():
     #
 
     # フォルダ「rekw_save」にCSVファイルを生成
-    csv_data.to_csv("rekw_save\\rekw.csv", index=False)
+    #csv_data.to_csv("rekw_save\\rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
-    return render_template("result.html" , reKw_data=reKw_data ,  main_kw=main_kw)
+    return render_template("result.html", csv_data=csv_data,  main_kw=main_kw)
 #
 
