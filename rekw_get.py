@@ -24,7 +24,8 @@ def rekw_function(main_kw):
     # ==============================================================
     # クロムを起動
     # ==============================================================
-    driver = webdriver.Chrome()
+    #Heroku内にあるChromedriverのパスを指定する
+    driver = webdriver.Chrome('/app/.chromedriver/bin/chromedriver')
 
 
     # ==============================================================
