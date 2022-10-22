@@ -268,7 +268,7 @@ def rekw_function(main_kw):
     # ==============================================================
     # numpy配列をCSVに保存
     # ==============================================================
-    csv_data = DataFrame(valuesArray, columns = columnsArray, index=False)
+    #csv_data = DataFrame(valuesArray, columns = columnsArray, index=False)
 
 
     # ==============================================================
