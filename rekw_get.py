@@ -31,7 +31,6 @@ def rekw_function(main_kw):
     # 最初の階層スタート  (8つの再検索kwとそれぞれの階層へ遷移するためのURLも取得)
     # ==============================================================
     # Googleのブラウザを開く
-    print("\n\n")
     driver.get('https://www.google.com/')
 
     # 「メインkw」を検索
@@ -160,7 +159,7 @@ def rekw_function(main_kw):
             # 検索kw
             if (k2 == 0):
                 if (k1 == 0):
-                    valuesArray[0][0] = search_kw
+                    valuesArray[0][0] = main_kw
                 #
                 if (k1 != 0):
                     valuesArray[k1][k2] = ""
