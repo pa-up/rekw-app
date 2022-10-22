@@ -148,19 +148,22 @@ def rekw_function(main_kw):
     # 「列名」  -> {検索kw}、 {1階層目の再検索kw}、{2階層目の再検索kw}
     col_list = [ "検索kw" , "1階層目の再検索kw" , "2階層目の再検索kw" ]
 
+    
     # 「値」  -> 50行3列
-    val_list = [ [0]*3 for i in range(64) ]
+    val_list = []
 
     for k2 in range(0, 3, 1):  # 列方向
+        val_col_list = []
+
         for k1 in range(0, 64, 1):  # 行方向
 
             # 検索kw
             if (k2 == 0):
                 if (k1 == 0):
-                    val_list[0][0] = main_kw
+                    val_col_list.append(main_kw)
                 #
                 if (k1 != 0):
-                    val_list[k1][k2] = ""
+                    val_col_list.append("")
                 #
             #
 
@@ -168,66 +171,66 @@ def rekw_function(main_kw):
             if (k2 == 1):
                 if (k1 <= 7):
                     if (k1 == 0):
-                        val_list[k1][k2] = Re_kw_array[0]
+                        val_col_list.append( Re_kw_array[0])
                     #
                     if (k1 != 0):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 15 and k1 > 7):
                     if (k1 == 8):
-                        val_list[k1][k2] = Re_kw_array[1]
+                        val_col_list.append( Re_kw_array[1])
                     #
                     if (k1 != 8):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 23 and k1 > 15):
                     if (k1 == 16):
-                        val_list[k1][k2] = Re_kw_array[2]
+                        val_col_list.append( Re_kw_array[2])
                     #
                     if (k1 != 16):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 31 and k1 > 23):
                     if (k1 == 24):
-                        val_list[k1][k2] = Re_kw_array[3]
+                        val_col_list.append( Re_kw_array[3])
                     #
                     if (k1 != 24):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 39 and k1 > 31):
                     if (k1 == 32):
-                        val_list[k1][k2] = Re_kw_array[4]
+                        val_col_list.append( Re_kw_array[4])
                     #
                     if (k1 != 32):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 47 and k1 > 39):
                     if (k1 == 40):
-                        val_list[k1][k2] = Re_kw_array[5]
+                        val_col_list.append( Re_kw_array[5])
                     #
                     if (k1 != 40):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 55 and k1 > 47):
                     if (k1 == 48):
-                        val_list[k1][k2] = Re_kw_array[6]
+                        val_col_list.append( Re_kw_array[6])
                     #
                     if (k1 != 48):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
                 if (k1 <= 63 and k1 > 55):
                     if (k1 == 56):
-                        val_list[k1][k2] = Re_kw_array[7]
+                        val_col_list.append( Re_kw_array[7])
                     #
                     if (k1 != 56):
-                        val_list[k1][k2] = ""
+                        val_col_list.append("")
                     #
                 #
             #
@@ -235,31 +238,32 @@ def rekw_function(main_kw):
             # 2階層目の再検索kw
             if (k2 == 2):
                 if (k1 <= 7):
-                    val_list[k1][k2] = Re_kw_array1[k1]
+                    val_col_list.append(Re_kw_array1[k1])
                 #
                 if (k1 <= 15 and k1 > 7):
-                    val_list[k1][k2] = Re_kw_array2[k1-8]
+                    val_col_list.append(Re_kw_array2[k1-8])
                 #
                 if (k1 <= 23 and k1 > 15):
-                    val_list[k1][k2] = Re_kw_array3[k1-16]
+                    val_col_list.append(Re_kw_array3[k1-16])
                 #
                 if (k1 <= 31 and k1 > 23):
-                    val_list[k1][k2] = Re_kw_array4[k1-24]
+                    val_col_list.append(Re_kw_array4[k1-24])
                 #
                 if (k1 <= 39 and k1 > 31):
-                    val_list[k1][k2] = Re_kw_array5[k1-32]
+                    val_col_list.append(Re_kw_array5[k1-32])
                 #
                 if (k1 <= 47 and k1 > 39):
-                    val_list[k1][k2] = Re_kw_array6[k1-40]
+                    val_col_list.append(Re_kw_array6[k1-40])
                 #
                 if (k1 <= 55 and k1 > 47):
-                    val_list[k1][k2] = Re_kw_array7[k1-48]
+                    val_col_list.append(Re_kw_array7[k1-48])
                 #
                 if (k1 <= 63 and k1 > 55):
-                    val_list[k1][k2] = Re_kw_array8[k1-56]
+                    val_col_list.append(Re_kw_array8[k1-56])
                 #
             #
         #
+        val_list.append(val_col_list)
     #
 
     # ==============================================================
