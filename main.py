@@ -1,5 +1,3 @@
-# rekw-app
-
 #========================================================
 # 最初に必要なインポート
 #========================================================
@@ -33,7 +31,10 @@ def result():
     reKw_data, csv_data = rekw_get.rekw_function(main_kw)
 
     # フォルダ「rekw_save」内にCSVファイルがあれば、削除
-    os.remove("./rekw_save/rekw.csv")
+    file_exsit = os.path.isfile("./rekw_save/rekw.csv")
+    if file_exsit == True:
+        os.remove("./rekw_save/rekw.csv")
+    #
 
     # フォルダ「rekw_save」にCSVファイルを生成
     csv_data.to_csv("rekw_save\\rekw.csv", index=False)
