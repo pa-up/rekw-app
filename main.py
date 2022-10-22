@@ -33,9 +33,9 @@ def result():
     col_list, val_list = rekw_get.rekw_function(main_kw)
 
     # フォルダ「rekw_save」内にCSVファイルがあれば、削除
-    file_exsit = os.path.isfile("./rekw_save/rekw.csv")
-    if file_exsit == True:
-        os.remove("./rekw_save/rekw.csv")
+    #file_exsit = os.path.isfile("./rekw_save/rekw.csv")
+    #if file_exsit == True:
+        #os.remove("./rekw_save/rekw.csv")
     #
 
     # フォルダ「rekw_save」にCSVファイルを生成

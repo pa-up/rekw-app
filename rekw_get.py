@@ -7,9 +7,8 @@ def rekw_function(main_kw):
     import numpy as np
 
     # ==============================================================
-    # データを格納するリストと配列を定義
+    # 再検索kwデータを格納する配列を定義
     # ==============================================================
-    # 再検索kwを格納する配列を定義
     Re_kw_array  = np.empty( (8) , dtype = 'object' )        # 最初の階層のkwを格納
     Re_kw_array1 = np.empty( (8) , dtype = 'object' )        # 次の階層のkwを格納
     Re_kw_array2 = np.empty( (8) , dtype = 'object' )        # 次の階層のkwを格納
@@ -73,15 +72,16 @@ def rekw_function(main_kw):
         search_box.submit()
         
         # 再検索kwのデータのグループを取得
-        g_ary2 = driver.find_elements(By.CLASS_NAME, 'k8XOCe') 
-        Re_kw_list1 = []  # リストを定義
-        Re_kw_list2 = []  # リストを定義
-        Re_kw_list3 = []  # リストを定義
-        Re_kw_list4 = []  # リストを定義
-        Re_kw_list5 = []  # リストを定義
-        Re_kw_list6 = []  # リストを定義
-        Re_kw_list7 = []  # リストを定義
-        Re_kw_list8 = []  # リストを定義
+        g_ary2 = driver.find_elements(By.CLASS_NAME, 'k8XOCe')
+        # リストを定義
+        Re_kw_list1 = []  
+        Re_kw_list2 = []
+        Re_kw_list3 = []
+        Re_kw_list4 = []
+        Re_kw_list5 = []
+        Re_kw_list6 = []
+        Re_kw_list7 = []
+        Re_kw_list8 = []
 
         for g in g_ary2:
             Re_kw = {}  # 辞書を定義
@@ -138,7 +138,7 @@ def rekw_function(main_kw):
             #
         # 8つの再検索kwそれぞれの階層でループ
     # 8つの再検索kwを全て取得済み
-    
+
 
     # ==============================================================
     # 取得した再検索kwを Numpy配列に変換
@@ -146,13 +146,10 @@ def rekw_function(main_kw):
     # データフレームを定義
 
     # 「列名」  -> {検索kw}、 {1階層目の再検索kw}、{2階層目の再検索kw}
-    columnsArray = np.empty( (3) , dtype = 'object' )
-    columnsArray[0] = "検索kw"
-    columnsArray[1] = "1階層目の再検索kw"
-    columnsArray[2] = "2階層目の再検索kw"
+    col_list = [ "検索kw" , "1階層目の再検索kw" , "2階層目の再検索kw" ]
 
-    # 「値」  -> 50行2列
-    valuesArray = np.empty((64,  3), dtype='object')
+    # 「値」  -> 50行3列
+    val_list = [ [0]*3 for i in range(64) ]
 
     for k2 in range(0, 3, 1):  # 列方向
         for k1 in range(0, 64, 1):  # 行方向
@@ -160,10 +157,10 @@ def rekw_function(main_kw):
             # 検索kw
             if (k2 == 0):
                 if (k1 == 0):
-                    valuesArray[0][0] = main_kw
+                    val_list[0][0] = main_kw
                 #
                 if (k1 != 0):
-                    valuesArray[k1][k2] = ""
+                    val_list[k1][k2] = ""
                 #
             #
 
@@ -171,66 +168,66 @@ def rekw_function(main_kw):
             if (k2 == 1):
                 if (k1 <= 7):
                     if (k1 == 0):
-                        valuesArray[k1][k2] = Re_kw_array[0]
+                        val_list[k1][k2] = Re_kw_array[0]
                     #
                     if (k1 != 0):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 15 and k1 > 7):
                     if (k1 == 8):
-                        valuesArray[k1][k2] = Re_kw_array[1]
+                        val_list[k1][k2] = Re_kw_array[1]
                     #
                     if (k1 != 8):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 23 and k1 > 15):
                     if (k1 == 16):
-                        valuesArray[k1][k2] = Re_kw_array[2]
+                        val_list[k1][k2] = Re_kw_array[2]
                     #
                     if (k1 != 16):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 31 and k1 > 23):
                     if (k1 == 24):
-                        valuesArray[k1][k2] = Re_kw_array[3]
+                        val_list[k1][k2] = Re_kw_array[3]
                     #
                     if (k1 != 24):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 39 and k1 > 31):
                     if (k1 == 32):
-                        valuesArray[k1][k2] = Re_kw_array[4]
+                        val_list[k1][k2] = Re_kw_array[4]
                     #
                     if (k1 != 32):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 47 and k1 > 39):
                     if (k1 == 40):
-                        valuesArray[k1][k2] = Re_kw_array[5]
+                        val_list[k1][k2] = Re_kw_array[5]
                     #
                     if (k1 != 40):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 55 and k1 > 47):
                     if (k1 == 48):
-                        valuesArray[k1][k2] = Re_kw_array[6]
+                        val_list[k1][k2] = Re_kw_array[6]
                     #
                     if (k1 != 48):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
                 if (k1 <= 63 and k1 > 55):
                     if (k1 == 56):
-                        valuesArray[k1][k2] = Re_kw_array[7]
+                        val_list[k1][k2] = Re_kw_array[7]
                     #
                     if (k1 != 56):
-                        valuesArray[k1][k2] = ""
+                        val_list[k1][k2] = ""
                     #
                 #
             #
@@ -238,28 +235,28 @@ def rekw_function(main_kw):
             # 2階層目の再検索kw
             if (k2 == 2):
                 if (k1 <= 7):
-                    valuesArray[k1][k2] = Re_kw_array1[k1]
+                    val_list[k1][k2] = Re_kw_array1[k1]
                 #
                 if (k1 <= 15 and k1 > 7):
-                    valuesArray[k1][k2] = Re_kw_array2[k1-8]
+                    val_list[k1][k2] = Re_kw_array2[k1-8]
                 #
                 if (k1 <= 23 and k1 > 15):
-                    valuesArray[k1][k2] = Re_kw_array3[k1-16]
+                    val_list[k1][k2] = Re_kw_array3[k1-16]
                 #
                 if (k1 <= 31 and k1 > 23):
-                    valuesArray[k1][k2] = Re_kw_array4[k1-24]
+                    val_list[k1][k2] = Re_kw_array4[k1-24]
                 #
                 if (k1 <= 39 and k1 > 31):
-                    valuesArray[k1][k2] = Re_kw_array5[k1-32]
+                    val_list[k1][k2] = Re_kw_array5[k1-32]
                 #
                 if (k1 <= 47 and k1 > 39):
-                    valuesArray[k1][k2] = Re_kw_array6[k1-40]
+                    val_list[k1][k2] = Re_kw_array6[k1-40]
                 #
                 if (k1 <= 55 and k1 > 47):
-                    valuesArray[k1][k2] = Re_kw_array7[k1-48]
+                    val_list[k1][k2] = Re_kw_array7[k1-48]
                 #
                 if (k1 <= 63 and k1 > 55):
-                    valuesArray[k1][k2] = Re_kw_array8[k1-56]
+                    val_list[k1][k2] = Re_kw_array8[k1-56]
                 #
             #
         #
@@ -268,20 +265,7 @@ def rekw_function(main_kw):
     # ==============================================================
     # numpy配列をCSVに保存
     # ==============================================================
-    #csv_data = DataFrame(valuesArray, columns = columnsArray, index=False)
-
-
-    # ==============================================================
-    # numpy配列をリストに変換
-    # ==============================================================
-    col_list = [ columnsArray[0] , columnsArray[1] , columnsArray[2] ]
-
-    val_list = [ [0]*3 for i in range(64) ]
-    for k1 in range(0, 64, 1):
-        for k2 in range(0, 3, 1):
-            val_list[k1][k2] = valuesArray[k1][k2]
-        #
-    #
+    #csv_data = DataFrame(val_list, columns = col_list, index=False)
 
 
     # ==============================================================
