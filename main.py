@@ -24,10 +24,9 @@ def show():
 # 再検索キーワードの出力ページを表示
 #========================================================
 # 検索窓ページで取得したメインキーワード
-main_kw = request.form["article"]
-
 @app.route("/result",methods=["POST"])   #「/result」のサイトで関数「result()」を実行
 def result():
+    main_kw = request.form["article"]
 
     # 「rekw_get.py」から返り値「html_data」をこちらのファイルにインポート
     reKw_data, csv_data = rekw_get.rekw_function(main_kw)
