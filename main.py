@@ -30,7 +30,7 @@ def result():
     main_kw = request.form["article"]
 
     # 「rekw_get.py」から返り値「html_data」をこちらのファイルにインポート
-    col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
+    col_list, val_list = rekw_get.rekw_function(main_kw)
 
     # フォルダ「rekw_save」内にCSVファイルがあれば、削除
     file_exsit = os.path.isfile("./rekw_save/rekw.csv")

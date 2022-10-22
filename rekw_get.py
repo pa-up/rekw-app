@@ -34,7 +34,7 @@ def rekw_function(main_kw):
     # Googleのブラウザを開く
     driver.get('https://www.google.com/')
 
-    # 「メインkw」を検索
+    #「メインkw」を検索
     search_box = driver.find_element(By.NAME, "q")   # 検索窓ページへアクセス
     search_box.send_keys(main_kw)    # 検索窓にメインkwを入力
     search_box.submit()
@@ -57,7 +57,6 @@ def rekw_function(main_kw):
             Re_kw_array[row] = Re_kw['title']
         #
     #
-
     # 現時点で、最初の階層での再検索kwを8つ取得
     # 次はアクセスリンクへ飛ぶ
 
@@ -139,6 +138,7 @@ def rekw_function(main_kw):
             #
         # 8つの再検索kwそれぞれの階層でループ
     # 8つの再検索kwを全て取得済み
+    
 
     # ==============================================================
     # 取得した再検索kwを Numpy配列に変換
