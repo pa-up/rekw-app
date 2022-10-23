@@ -7,42 +7,42 @@ table {
 
 th {
   background-color: #d0ebfd;
-  border: 2px solid #292929;
+  border: 1px solid #292929;
 }
 
-td {
+td, th {
   border: 1px solid #333;
 }
 
 tr:nth-child(8n+1) {
-  border-top: 2px solid #292929;
+  border-top: 1px solid #292929;
 }
 
 
 /* 16n+9 〜 16n+16 の背景色を配色 */
 tr:nth-child(16n+9) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+10) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+11) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+12) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+13) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+14) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+15) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 tr:nth-child(16n+16) {
-  background-color: #e0ffff;
+  background-color: #f0ffff;
 }
 
 
