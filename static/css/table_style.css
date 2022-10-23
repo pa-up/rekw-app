@@ -1,5 +1,6 @@
 table {
     width: 100%;
+    border-collapse: collapse;
     text-align: center;
     /* 全テキストを中央寄せ */
 }
