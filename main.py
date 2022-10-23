@@ -15,7 +15,7 @@ import rekw_get
 #========================================================
 # 検索窓のページを表示
 #========================================================
-@app.route("/search")   #「/search」のサイトで関数「show()」を実行
+@app.route("/")   #「/search」のサイトで関数「show()」を実行
 def show():
     return render_template("search.html")
 #
