@@ -265,6 +265,8 @@ def rekw_function(main_kw):
         #
         val_list.append(val_col_list)
     #
+    # リスト配列を転置
+    val_list_t = list(zip(*val_list))
 
     # ==============================================================
     # numpy配列をCSVに保存
@@ -275,7 +277,7 @@ def rekw_function(main_kw):
     # ==============================================================
     # 「main.py」に再検索キーワードのhtmlデータを返り値として、送信
     # ==============================================================
-    return col_list, val_list
+    return col_list, val_list_t
 #
     
     
