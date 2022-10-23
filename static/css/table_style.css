@@ -14,7 +14,35 @@ td {
   border: 1px solid #333;
 }
 
-tr:nth-child(8n+2) {
+tr:nth-child(8n+1) {
   border-top: 2px solid #292929;
-  background-color: aquamarine;
 }
+
+
+/* 16n+9 〜 16n+16 の背景色を配色 */
+tr:nth-child(16n+9) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+10) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+11) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+12) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+13) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+14) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+15) {
+  background-color: #e0ffff;
+}
+tr:nth-child(16n+16) {
+  background-color: #e0ffff;
+}
+
+
