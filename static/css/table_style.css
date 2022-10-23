@@ -1,5 +1,4 @@
 table {
-    border-collapse: collapse;
     width: 100%;
     text-align: center;
     /* 全テキストを中央寄せ */
@@ -9,7 +8,4 @@ th {
   background-color: #d0ebfd;
 }
 
-th,td {
-    border: solid 1px #a5d1f1;
-}
 
