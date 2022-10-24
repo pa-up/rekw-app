@@ -274,13 +274,13 @@ def rekw_function(main_kw):
     # ==============================================================
     # numpy配列をCSVに保存
     # ==============================================================
-    csv_data = DataFrame(val_list_t, columns = col_list, index=False)
+    #csv_data = DataFrame(val_list_t, columns = col_list, index=False)
 
 
     # ==============================================================
     # 「main.py」に再検索キーワードのhtmlデータを返り値として、送信
     # ==============================================================
-    return col_list, val_list_t, csv_data
+    return col_list, val_list_t #, csv_data
 #
     
     
