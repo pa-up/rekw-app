@@ -33,7 +33,7 @@ def result():
     col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
 
     # フォルダ「rekw_save」内にCSVファイルがあれば、削除
-    file_exsit = os.path.isfile("./data/csv")
+    file_exsit = os.path.isfile("./data/csv/rekw.csv")
     if file_exsit == True:
         os.remove("./data/csv/rekw.csv")
     #
