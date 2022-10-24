@@ -55,5 +55,5 @@ def csv():
     csv_save_data.to_csv("rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
-    return render_template("csv.html")
+    return render_template("csv.html", csv_save_data)
 #
