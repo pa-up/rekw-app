@@ -280,7 +280,7 @@ def rekw_function(main_kw):
     # ==============================================================
     # 「main.py」に再検索キーワードのhtmlデータを返り値として、送信
     # ==============================================================
-    return col_list, val_list_t #, csv_data
+    return col_list, val_list_t , csv_data
 #
     
     

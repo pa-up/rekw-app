@@ -30,10 +30,10 @@ def result():
     main_kw = request.form["article"]
 
     # 「rekw_get.py」から返り値「html_data」をこちらのファイルにインポート
-    col_list, val_list = rekw_get.rekw_function(main_kw)
+    col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
 
     # フォルダ「rekw_save」にCSVファイルを生成
-    #csv_data.to_csv("./data/csv/rekw.csv", index=False)
+    csv_data.to_csv("./data/csv/rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
     return render_template("result.html", col_list=col_list , val_list=val_list)
