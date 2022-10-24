@@ -34,7 +34,7 @@ def result():
 
     # フォルダ「rekw_save」にCSVファイルを生成
     # ここでエラーが発生（internal error）
-    csv_data.to_csv("/data/csv/rekw.csv", encoding='shift_jis')
+    csv_data.to_csv("./data/csv/rekw.csv", encoding='shift_jis')
 
     # 再検索キーワードの出力結果ページ
     return render_template("result.html", col_list=col_list , val_list=val_list)
