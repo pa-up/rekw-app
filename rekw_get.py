@@ -26,6 +26,8 @@ def rekw_function(main_kw):
     #Heroku内にあるChromedriverのパスを指定する
     driver = webdriver.Chrome('/app/.chromedriver/bin/chromedriver')
 
+    # 現在の問題点： herokuに設定したChromのバージョンが古すぎる
+
 
     # ==============================================================
     # 最初の階層スタート  (8つの再検索kwとそれぞれの階層へ遷移するためのURLも取得)
@@ -38,20 +40,18 @@ def rekw_function(main_kw):
     search_box.send_keys(main_kw)    # 検索窓にメインkwを入力
     search_box.submit()
 
-    # 最初の階層における、再検索kwのデータのグループを取得
+    # 最初の階層における、再検索kwのデータのグループを取得（リンクやテキストなどの情報が包括）
     g_ary = driver.find_elements(By.CLASS_NAME, 'k8XOCe')
-    # class「y6Uyqe」の中で、
-    # # 「b」タグは再検索kwのテキストのみ、[a href]は再検索kwの検索結果画面のみ
 
     Re_kw_list = []  # リストを定義
     for g in g_ary:
         Re_kw = {}  # 辞書を定義
         
-        # 各々の再検索kwのタイトル
+        # 各々の再検索kwのテキスト
         Re_kw['title'] = g.find_element(By.CLASS_NAME, 's75CSd').text
         Re_kw_list.append(Re_kw)
         
-        # 処理内容 ： 新たに作った、リスト「Re_kw」に配列「Re_kw_array」に格納する
+        # リスト「Re_kw」をNumpy配列「Re_kw_array」に格納する
         for row, Re_kw in enumerate(Re_kw_list, 0):
             Re_kw_array[row] = Re_kw['title']
         #
@@ -87,6 +87,9 @@ def rekw_function(main_kw):
             Re_kw = {}  # 辞書を定義
             # 各々の再検索kwのみを取得
             Re_kw['title'] = g.find_element(By.CLASS_NAME, 's75CSd').text
+
+
+            # リスト「Re_kw」をNumpy配列「Re_kw_array」に格納する
 
             if (k == 0):
                 Re_kw_list1.append(Re_kw)
@@ -141,7 +144,7 @@ def rekw_function(main_kw):
 
 
     # ==============================================================
-    # 取得した再検索kwを Numpy配列に変換
+    # Numpy配列を「見栄えの良いCSV」になるように、リストに格納
     # ==============================================================
     # データフレームを定義
 
@@ -271,13 +274,13 @@ def rekw_function(main_kw):
     # ==============================================================
     # numpy配列をCSVに保存
     # ==============================================================
-    #csv_data = DataFrame(val_list, columns = col_list, index=False)
+    csv_data = DataFrame(val_list, columns = col_list, index=False)
 
 
     # ==============================================================
     # 「main.py」に再検索キーワードのhtmlデータを返り値として、送信
     # ==============================================================
-    return col_list, val_list_t
+    return col_list, val_list_t, csv_data
 #
     
     
