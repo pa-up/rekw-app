@@ -52,8 +52,9 @@ def result():
 @app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
 def csv():
     # フォルダ「rekw_save」にCSVファイルを生成
-    csv_save_data.to_csv("rekw.csv", index=False)
+    csv_data = csv_save_data
+    csv_data.to_csv("rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
-    return render_template("csv.html", csv_save_data=csv_save_data)
+    return render_template("csv.html", csv_data=csv_data)
 #
