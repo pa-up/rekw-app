@@ -32,12 +32,6 @@ def result():
     # 「rekw_get.py」から返り値「html_data」をこちらのファイルにインポート
     col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
 
-    # フォルダ「rekw_save」内にCSVファイルがあれば、削除
-    file_exsit = os.path.isfile("./data/csv/rekw.csv")
-    if file_exsit == True:
-        os.remove("./data/csv/rekw.csv")
-    #
-
     # フォルダ「rekw_save」にCSVファイルを生成
     csv_data.to_csv("./data/csv/rekw.csv", index=False)
 
