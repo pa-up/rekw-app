@@ -36,7 +36,7 @@ def result():
     col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
     
     # csv.htmlで使うデータ
-    #session["csv_data_save"] = csv_data
+    session["csv_data_save"] = csv_data
 
     # 再検索キーワードの出力結果ページ
     return render_template("result.html", col_list=col_list , val_list=val_list)
