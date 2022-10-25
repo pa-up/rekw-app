@@ -56,7 +56,7 @@ def csv():
     csv_data = DataFrame(val_list, columns=col_list)
 
     # フォルダ「rekw_save」にCSVファイルを生成
-    csv_data.to_csv("/data/csv/rekw.csv", index=False)
+    csv_data.to_csv("rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
     return render_template("csv.html", csv_data=csv_data)
