@@ -9,7 +9,7 @@ import csv
 from flask import Flask, request, render_template, session
 
 app = Flask(__name__)
-#app.secret_key = 'csv_data_save'
+app.secret_key = 'csv_data_save'
 
 #「rekw_algorithm.py」からのインポート
 import rekw_get
@@ -47,13 +47,13 @@ def result():
 # CSVデータの取得
 #========================================================
 # CSVを保存するためだけのページ（heroku無料版だとこれが限界？）
-#@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
-#def csv():
-    #csv_data = session["csv_data_save"]  # 関数の外部からcsvデータをとってくる
+@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
+def csv():
+    csv_data = session["csv_data_save"]  # 関数の外部からcsvデータをとってくる
 
     # フォルダ「rekw_save」にCSVファイルを生成
-    #csv_data.to_csv("rekw.csv", index=False)
+    csv_data.to_csv("rekw.csv", index=False)
 
     # 再検索キーワードの出力結果ページ
-    #return render_template("csv.html", csv_data=csv_data)
+    return render_template("csv.html", csv_data=csv_data)
 #
