@@ -33,10 +33,11 @@ def result():
     main_kw = request.form["article"]
 
     # 「rekw_get.py」から返り値「html_data」をこちらのファイルにインポート
-    col_list, val_list, csv_data = rekw_get.rekw_function(main_kw)
+    col_list, val_list = rekw_get.rekw_function(main_kw)
     
     # csv.htmlで使うデータ
-    session["csv_data_save"] = csv_data
+    session["csv_col"] = col_list
+    session["csv_val"] = val_list
 
     # 再検索キーワードの出力結果ページ
     return render_template("result.html", col_list=col_list , val_list=val_list)
@@ -49,7 +50,10 @@ def result():
 # CSVを保存するためだけのページ（heroku無料版だとこれが限界？）
 @app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
 def csv():
-    csv_data = session["csv_data_save"]  # 関数の外部からcsvデータをとってくる
+    col_list = session["csv_col"]
+    val_list = session["csv_val"]
+
+    csv_data = DataFrame(val_list, columns=col_list)
 
     # フォルダ「rekw_save」にCSVファイルを生成
     csv_data.to_csv("rekw.csv", index=False)
