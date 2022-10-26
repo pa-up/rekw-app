@@ -39,7 +39,7 @@ def result():
 
     # CSVファイルを生成し、一時的にHeroku Dynoに保存
     file_name = 'rekw.csv'
-    csv_data.to_csv(file_name, index=False, encoding='shift_jis')
+    csv_data.to_csv(file_name, encoding='shift_jis', index=False)
 
     # 「s3_save.py」を実行して、s3にアップロードされたCSVへのURLを取得
     s3_csv_url = s3_dave.csv_boto3(file_name)
