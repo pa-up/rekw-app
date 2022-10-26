@@ -6,6 +6,7 @@
 from pandas import DataFrame    # DataFrame型の配列
 import os
 import csv
+import boto3
 from flask import Flask, request, render_template, session
 
 app = Flask(__name__)
@@ -48,16 +49,37 @@ def result():
 # CSVデータの取得
 #========================================================
 # CSVを保存するためだけのページ（heroku無料版だとこれが限界？）
-#@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
-#def csv():
+@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
+def csv():
     col_list = session["csv_col"]
     val_list = session["csv_val"]
 
     csv_data = DataFrame(val_list, columns=col_list)
 
     # フォルダ「rekw_save」にCSVファイルを生成
-    csv_data.to_csv("./data/csv/rekw.csv", index=False)
+    # 直接herokuサーバーにファイル保存は不可能（→ AWSのS3を利用）
+    
+    # ファイルを一時的にHeroku Dynoに保存
+    file_name = 'rekw.csv'
+    csv_data.to_csv(file_name, index=False)
+
+    # s3へcsvファイルをアップロード
+    accesskey = "AKIAYDGH7WYNYWMOPDD2"
+    secretkey = "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"
+    region = "ap-northeast-1"   # 東京(アジアパシフィック)：ap-northeast-1
+    bucket_name = "rekw-csv-save"
+
+    s3 = boto3.client('s3', aws_access_key_id=accesskey, aws_secret_access_key=secretkey, region_name=region)
+    s3.upload_file(file_name, bucket_name, file_name)
+
+    # S3へアップロードしたCSVへのURLを取得する
+    s3_csv_url = s3.generate_presigned_url(
+        ClientMethod='get_object',
+        Params={'Bucket': bucket_name, 'Key': file_name},
+        ExpiresIn=3600,
+        HttpMethod='GET'
+    )
 
     # 再検索キーワードの出力結果ページ
-    return render_template("csv.html", csv_data=csv_data)
+    return render_template("csv.html", csv_data=csv_data, s3_csv_url=s3_csv_url)
 #
