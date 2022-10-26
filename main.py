@@ -4,9 +4,6 @@
 # 最初に必要なインポート
 #========================================================
 from pandas import DataFrame    # DataFrame型の配列
-import os
-import csv
-import boto3
 from flask import Flask, request, render_template, session
 
 app = Flask(__name__)
@@ -42,37 +39,11 @@ def result():
 
     # CSVファイルを生成し、一時的にHeroku Dynoに保存
     file_name = 'rekw.csv'
-    csv_data.to_csv(file_name, index=False)
+    csv_data.to_csv(file_name, index=False, encoding='shift_jis')
 
-    # 「s3_save.py」を実行して、s3にCSVをアップロード
+    # 「s3_save.py」を実行して、s3にアップロードされたCSVへのURLを取得
     s3_csv_url = s3_dave.csv_boto3(file_name)
 
     # 再検索キーワードの出力結果ページ
     return render_template("result.html", col_list=col_list , val_list=val_list, s3_csv_url=s3_csv_url)
-
-    # csv.htmlで使うデータ
-    #session["csv_col"] = col_list
-    #session["csv_val"] = val_list
-#
-
-
-#========================================================
-# CSVデータの取得
-#========================================================
-# CSVを保存するためだけのページ（heroku無料版だとこれが限界？）
-#@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
-#def csv():
-    col_list = session["csv_col"]
-    val_list = session["csv_val"]
-    csv_data = DataFrame(val_list, columns=col_list)
-    
-    # ファイルを一時的にHeroku Dynoに保存
-    file_name = 'rekw.csv'
-    csv_data.to_csv(file_name, index=False)
-    
-    # 「s3_save.py」を実行して、s3にCSVをアップロード
-    s3_csv_url = s3_dave.csv_boto3(file_name)
-
-    # 再検索キーワードの出力結果ページ
-    return render_template("csv.html", csv_data=csv_data, s3_csv_url=s3_csv_url)
 #
