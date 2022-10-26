@@ -48,8 +48,8 @@ def result():
 # CSVデータの取得
 #========================================================
 # CSVを保存するためだけのページ（heroku無料版だとこれが限界？）
-@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
-def csv():
+#@app.route("/csv", methods=["POST"])  # 「/csv」のサイトで関数「csv()」を実行
+#def csv():
     col_list = session["csv_col"]
     val_list = session["csv_val"]
 
