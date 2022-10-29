@@ -41,7 +41,7 @@ def result():
     file_name = 'rekw.csv'
     csv_data.to_csv(file_name,encoding='shift_jis')
 
-    # 「s3_save.py」を実行して、s3にアップロードされたCSVへのURLを取得
+    # 「s3_save.py」を実行して、s3にアップロードされgit add .たCSVへのURLを取得
     s3_csv_url = s3_dave.csv_boto3(file_name)
 
     # 再検索キーワードの出力結果ページ
