@@ -14,7 +14,8 @@
 # ② 画像のケース
 # file_name = 'rekw_img.png'  # s3アップ後のファイル名の決定
 # file_path = "./data/img/rekw_img.png"  # アプリプロジェクト内の画像パス
-# cv2.imwrite(file_name, file_path)    # dynoへ画像の一時的な生成
+# file_data = cv2.imread(file_path)  # アップしたいファイルデータを変数に格納
+# cv2.imwrite(file_name, file_data)    # dynoへ画像の一時的な生成
 # s3_img_url = s3_dave.file_boto3(file_name)   # 本ファイル実行(s3アップとURL取得)
 # ---------------------------------------------------------------------------
 
