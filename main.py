@@ -4,6 +4,7 @@
 # 最初に必要なインポート
 #========================================================
 from pandas import DataFrame    # DataFrame型の配列
+import cv2
 from flask import Flask, request, render_template, session
 
 app = Flask(__name__)
@@ -19,7 +20,14 @@ import s3_dave
 #========================================================
 @app.route("/")   #「/search」のサイトで関数「show()」を実行
 def show():
-    return render_template("search.html")
+    # 画像ファイルを一時的にHeroku Dynoに保存
+    file_name = 'rekw_img.png'
+    file_path = "./data/img/rekw_img.png"
+    cv2.imwrite(file_name, file_path)
+
+    # 「s3_save.py」を実行して、s3にアップロードされたCSVへのURLを取得
+    s3_img_url = s3_dave.file_boto3(file_name)
+    return render_template("search.html", s3_img_url=s3_img_url)
 #
 
 
@@ -42,7 +50,7 @@ def result():
     csv_data.to_csv(file_name,encoding='shift_jis')
 
     # 「s3_save.py」を実行して、s3にアップロードされたCSVへのURLを取得
-    s3_csv_url = s3_dave.csv_boto3(file_name)
+    s3_csv_url = s3_dave.file_boto3(file_name)
 
     # 再検索キーワードの出力結果ページ
     return render_template("result.html", col_list=col_list , val_list=val_list, s3_csv_url=s3_csv_url)

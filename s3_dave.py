@@ -10,7 +10,7 @@
 
 import boto3
 
-def csv_boto3(file_name):
+def file_boto3(file_name):
     
     # s3のユーザー情報を記載
     accesskey = "AKIAYDGH7WYNYWMOPDD2"
