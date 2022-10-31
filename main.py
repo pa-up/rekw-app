@@ -23,7 +23,8 @@ def show():
     # 画像ファイルを一時的にHeroku Dynoに保存
     file_name = 'rekw_img.png'
     file_path = "./data/img/rekw_img.png"
-    cv2.imwrite(file_name, file_path)
+    file_data = cv2.imread(file_path)
+    cv2.imwrite(file_name, file_data)
 
     # 「s3_save.py」を実行して、s3にアップロードされたCSVへのURLを取得
     s3_img_url = s3_dave.file_boto3(file_name)
