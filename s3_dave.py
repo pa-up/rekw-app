@@ -7,17 +7,17 @@
 # 「main.py」でのコード記載例
 # ---------------------------------------------------------------------------
 # ① csvのケース
-# file_name = 'rekw.csv'    # ファイル名の決定
+# file_name = 'rekw.csv'    # s3アップ後のファイル名の決定
 # csv_data.to_csv(file_name, index=False)    # dynoへCSVの一時的な生成
 # s3_csv_url = s3_dave.csv_bots(file_name)   # 本ファイル実行(s3アップとURL取得)
 # ---------------------------------------------------------------------------
 # ② 画像のケース
-# file_name = 'rekw_img.png'  # ファイル名の決定
-# file_path = "./data/img/rekw_img.png"  # プロジェクト内の画像パス
+# file_name = 'rekw_img.png'  # s3アップ後のファイル名の決定
+# file_path = "./data/img/rekw_img.png"  # アプリプロジェクト内の画像パス
 # cv2.imwrite(file_name, file_path)    # dynoへ画像の一時的な生成
 # s3_img_url = s3_dave.file_boto3(file_name)   # 本ファイル実行(s3アップとURL取得)
 # ---------------------------------------------------------------------------
-#============================================================================
+
 
 import boto3
 
